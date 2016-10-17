@@ -9,6 +9,8 @@
 \addtolength{\textwidth}{1in}
 
 
+\usepackage{datetime}
+
 
 \begin{document}
 
@@ -19,12 +21,81 @@ CMSC396H -- Fall 2016 -- University of Maryland\\
 Advisor: John P. Dickerson
 \end{center}
 
-\section*{Words will eventually go here}
-And also here.
+\section*{Background}
+%Room Swap Procedure
+The "Room Exchange" is University of Maryland Department of Resident Life's current mid-semester room reassignment process, allowing for three different types of exchanges: Individual Vacancies, Pair Vacancies and Room Swaps. Room Swaps are available Tuesday through Sunday, 9:00am-11:00pm each week.
+%The current "Room Swap Procedure" allows for 3 different types of exchanges:
+\begin{itemize}
+\item Individual Vacancies: When an individual sees a vacancy he or she is interested in, the resident can place a 30-minute hold on the vacancy while he or she continue to browse; Once the resident finds a vacancy that he or she wants to be reassigned to, he or she can accept that vacancy.
+\item Pair Vacancies: Residents form groups of two (with one Group Leader and one Group Member). When the Group Leader sees a vacancy they're interested in, the Group Leader can place a 30-minute hold on the vacancy while they continue to browse; Once the Group Leader finds a pair vacancy that they want to be reassigned to, the Group Leader can accept that pair vacancy (on behalf of the group).
+\item Room Swaps: Individuals can request swaps with other residents who are interested in swapping. Residents can request to swap from up to 3 different spaces at the same time. Resident who opt in to the Room Swap will see room information only; no individual student information will be supplied during the process.
+\end{itemize}
+(\url{http://reslife.umd.edu/housing/reassignments/roomexchange/})
+%Room Swaps are available Tuesday through Tuesday, 9am-11pm each week. 
+We would like to extend the roommate swapping to handle personal preferences and more than just pairs of people, in an optimal way. 
+\subsection*{Summary}
+\begin{itemize}
+\item Issues with current system:
+\begin{enumerate}
+\item Swapping only happens on a time constricted basis.
+\item A 3-way roommate swap is not able to be taken into account.
+\end {enumerate}
+\item Goals:
+\begin{enumerate}
+\item More than just pairs should be able to swap.
+\item Be able to handle more swapping conditions
+\item make better pairs based on their preferences 
+\end {enumerate}
+%\begin{itemize}\item Weekly Meetings: In effort to complete this rigorous task we will aim to meet at least one a week with:
+\begin{itemize}
+\item Team members: Wednesday, 2:00 pm-3:00 pm\item Instructor: Wednesday, 3:00 pm-3:30 pm
+\end{itemize}\item Communication
+\begin{itemize}\item We have a group message to be able to plan when to meet and stay on top of our progress\item Additionally, we communicate with our professor via email as needed, for assistance
+\end{itemize}
+\end{itemize}
 
-To compile this, you'll need to download and install a Latex distribution.  On a Mac, I'd recommend \url{https://tug.org/mactex/}.  On Windows and Linux, I'd probably recommend \url{http://miktex.org/}.
+\section*{Schedule}
+%\newdate{mylongdate}{26}{04}{2013}
 
-This is how you cite papers:~\cite{Jevons85:Money}.  The information for those citations can be found in the \texttt{refs.bib} file in this directory.
+%\section*{Formalizing}
+%\section*{Optimizing}
+%\section*{Implementation}
+%\begin{itemize}
+%\item \textbf{Create the website:}
+%\item Edit the website and create the presentation
+%\end{itemize}
+\begin{itemize}
+%\item \textbf{Formalizing: 10/19/2016-11/2/2016}: 
+\item \textbf{Model the problem/formulate: 10/19/2016-11/2/2016}:
+
+The goal of this section is to create, in english, a summary of what we are trying to solve. We want to hone in on the exact details of what the moving parts of the problem are, and what we are aiming to solve. With respect to the roommate swap problem, we need to formulate two things:
+\begin{itemize}\item First week - Formulate all of the variables that go in to a roommate - in other words, what factors will help us rank roommates? How will we decide someone is good or bad for someone else? What are the basic factors that come into play? Gender? Major? Location? Year? Characteristics? If characteristics, what personality traits? How will we gather this information? What can we actually use as information in our algorithm?\item Second Week 
+\begin{itemize}
+\item How many roommates should this algorithm be able to handle swapping? 
+\item When should the swapping occur? 
+\item Read up on other papers and meet with instructor to discuss these details. 
+\end{itemize}
+\end{itemize}
+Once we formalize the problem and all of the variables, we should be in a good place to start outlining and implementing the algorithm.
+\item \textbf{Optimizing (implement an optimal algorithm): 11/2/2016-11/9/2016} 
+
+Verify that we have formalized the problem accordingly in the previous step with the instructor. Once we have all the constraints finalized, use instructor's previous experience with Kidney Swapping to help create an algorithm for the roommate swapping
+\item \textbf{Implementation: 11/9/2016-11/30/2016} 
+\begin{itemize}
+\item First Week: Create the website skeleton and create a form for users to enter information. Information entered by users will be stored in a database. 
+\item Second Week: Combine website with swapping algorithm and build out test cases
+\item Third Week: Test the website throughly and make it prettier if we have time
+\end{itemize}
+\item Edit the website and create the presentation: 
+\begin{itemize} 
+\item Create a presentation\item Practice the presentation
+\end{itemize}
+
+\end{itemize}
+
+%And also here.
+%To compile this, you'll need to download and install a Latex distribution.  On a Mac, I'd recommend \url{https://tug.org/mactex/}.  On Windows and Linux, I'd probably recommend \url{http://miktex.org/}.
+%This is how you cite papers:~\cite{Jevons85:Money}.  The information for those citations can be found in the \texttt{refs.bib} file in this directory.
 
 \subsection*{Notes from Ryan Sachs}
 
@@ -46,6 +117,10 @@ Formalize what we don't know.
 \item What exactly are we trying to solve?
 \item How will we determine preferences/swapping?
 \end{itemize}
+
+
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
