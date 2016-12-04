@@ -14,7 +14,7 @@ public class Profile {
 	 */
 	
 	public Profile() {
-		System.out.println("Let's swap some rooms!");
+		System.out.println("Let's do some room swapping!");
 	}
 	
 	public Profile(int gender, int smoker, int ppl, int study) {
