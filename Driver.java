@@ -47,27 +47,18 @@ public class Driver {
 				}
 			}
 			
+			bw.close();
+			
 			// Now read the values into people objects
-			BufferedReader brHash = new BufferedReader(new FileReader(fout));
-			while ((currHash = brHash.readLine()) != null) {
-				
-				BufferedReader br = new BufferedReader(new FileReader(passIn));
-				found = false;
-				while ((line = br.readLine()) != null && found == false) {
-					hashed = "CMSC414" + line + "Fall16";
-					hashed = getSha256(hashed);
-				
-					if (hashed.equals(currHash)) {
-						System.out.println("found: " + hashed);
-						bw.write(line);
-						bw.newLine();
-						found = true;
-						i++;
-					}
+			BufferedReader br = new BufferedReader(new FileReader(fout));
+			while ((line = br.readLine()) != null) {
+				if (line.equals("New Person")) { 
+					// create a new person profile/ node in graph
 				}
+				
 			}
 
-			bw.close();
+			br.close();
 				
 		} catch (Exception e) {
 			System.out.println(hashed);	
