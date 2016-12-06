@@ -54,11 +54,32 @@ public class Driver {
 			while ((line = br.readLine()) != null) {
 				if (line.equals("New Person")) { 
 					// create a new person profile/ node in graph
+					
+					// if (person is smoker)
+						// the value is a one
+					// else if the person is not a smoker and doesn't care
+						// the value should be zero
+					// else
+						// the value is negative one if the person cares and doesn't smoke
+					
+					// all the other fields will be generated
 				}
 				
 			}
 
 			br.close();
+			
+			// Calculate weights for each person
+			// for (each person in graph)
+				// Implement a lambda function that if a person is a smoker only then only
+				// loop through people who don't mind smokers
+				
+				// Calculate weight for person A->person B
+				// Create edge from A->B in graph
+			
+			// end for
+			
+			// optimization of graph
 				
 		} catch (Exception e) {
 			System.out.println(hashed);	
