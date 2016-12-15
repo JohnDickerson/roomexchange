@@ -9,40 +9,95 @@
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage{blindtext}
- 
 \usepackage{multicol}
 
-
-\title{Room Swapping Optimization}
-\author{Lauren Leach, Ryan Sachs, Lisa Maszkiewicz}
-\date{\today}
-
+\title{Room Swapping Optimizations}
+ 
 \begin{document}
- 
+
 \maketitle
+
+\begin{center}
+\author{\textbf {Authors: Lauren Leach, Ryan Sachs, Lisa Maszkiewicz\\ \footnotesize Supervised by: John Dickerson\\ }} 
+\institute{\textbf \\{University of Maryland, College Park\\}}
  
+%\begin{document}
+
+\begin{abstract}
+   \\abstract-text\\ \\ \\ \\
+\end{abstract}
+
+\end{center}
 \begin{multicols}{2}
 
 \section{Introduction}
-
 \subsection{Problem Statement and Goal}
+The goal of the roommate swap research project is to improve the current process of roommate swapping that occurs at the University of Maryland. Specifically, we sought to look at the way swapping is currently done and identify the shortcomings, improve or eradicate those shortcomings in a new model, and implement an optimization that would result in better roommate swaps. We define a ‘better’ swap to mean that it would result in greater happiness. An optimal swap would have the maximum happiness level throughout everyone that is swapping.
+
 \subsection{Current Roommate Swap Program}
-\subsection{Expected Outcomes}
+The current roommate swap program at the University of Maryland is limited. It only handles a few scenarios if someone is unhappy with their living situation.
+
+Individual Vacancies – There’s an empty spot in a room somewhere on campus. A person is selected from the room swap and placed into this vacancy.\\
+Pair Vacancies – Two people from different rooms who are both unhappy with their roommates fill out a form requesting each other. They are both put into a room on campus that was previously empty.\\
+Room Swaps – Similarly to pair vacancies, two people fill out a form together, but this time they request to switch rooms (not be roommates). They then switch rooms.
+
+\subsection{Shortcomings of Current Program}
+A three-way swap is not possible. The same two-way swap situation could be present within three rooms. In the current model, this would not be handled.
+The model requires that you know someone who is unhappy with their roommate situation. If you wanted to swap rooms or to do a pair vacancy you would have to put someone’s university id number down on a form. It is unlikely that you would be able to find someone on your own that is also unhappy with their situation and interested in moving out to live with you as a result. Similarly, it is unlikely that you would be able to find someone to swap with. There are disproportionally more people that fall into the individual vacancy category than there are swaps and pair vacancies due to the format of needing to know someone and their UID.
+
+Individual vacancies are a limited commodity – there are only so many rooms on campus that are missing one person or that are just empty. If most people are entering the swap needing this condition, then most people will not be able to find a new room. 
+
+There’s no reason why we can’t consider everyone for roommate swapping. In principle, doing a swap and performing an individual vacancy are the same thing for the person entering the swap; in both cases they are placed in a room with a ‘missing’ roommate. Unfortunately, many people who would be awesome candidates for a roommate swap are not even considered due to needing to know someone who is also unhappy with their situation.
+
+Preferences are not taken into consideration at all in the current format. Arguably, people who enter the swap are just as likely to be unhappy in their new room as they were to be unhappy in their first room. The current program could easily place someone into a room where they are destined to be unhappy because it doesn’t consider the compatibility of roommates – just whether or not there is a vacancy.
+
+\subsection{Expected Outcomes and Solution}
+Our goal is to eradicate or improve all the shortcomings of the current model. One of our main goals is to streamline roommate swaps so they all fall under the same umbrella. Secondly, we aim to take preferences into account when deciding room swaps. Finally, we would like to optimize the room swaps using integer programming.
 
 \section{Solution Overview}
-\subsection{Preferences}
+Our proposed optimization solution has two parts, each of which are separate entities; a model and preferences. The optimization itself needs nothing besides the model to run, but to create an optimal solution where people tend to be happier with their roommates we need some way to have preferences input into the model. In this section we will start by explaining the model in depth, then we will explain how the model interacts with the preferences. We will explain the preferences in depth in the next section.
+
 \subsection{Model}
+We need a model that is able to store all the rooms that consist of at least one roommate that is unhappy with their living situation. The model also needs to hold all the students in the swap. In order for an optimization to take place, each room needs to contain all the possible pairs of roommates with a corresponding weight attached. The weight represents compatibility and higher weight means higher compatibility. Integer programming will be able to maximize the weights throughout all of the rooms as a result. The core outcome of our model needs to be that integer programming can be used to optimize it.
+
+In figure 1 you can see an example of our model. Figure 1.1a represents the set of all the students in the swap, figure 1.1b represents the set of all the rooms, and figures 1.3a-c represent all the possible swaps that can take place per room. 
+
+\includegraphics[scale=0.6]{model} %\qquad
+
+As you can see in the above figure, room r1 has one student in the swap, s1, room r2 has two students in the swap, s2 and s3, and room r3 has one student in the swap, s4. Figure 1.4 is the result of the optimal swap taking place, where student s3 moves into r1, students s2 and s3 move into r2, and student s2 moves into r3. In figures 1.3a-c each tuple consists of student(s) and a weight. The tuples containing the optimal swaps have the highest weight total of any other combination with 24.
+
+\subsection{Preferences}
+In the next section we will go into specifics about preferences we examined, preferences we picked, preferences that could be considered in future iterations of this project, and how we go about converting preferences into weights. In this section, our focus is to explain how preferences fit into the overall solution.\\
+Preferences are what result in the weights in the model – they take into account two things; the personality compatibility of the roommates and the room characteristics. Students will fill out a form/survey and their answers will be compared to other students’ answers to try to predict compatibility. 
+
+\subsection{Deal-breakers} 
+Closely related to preferences is the concept of deal-breakers. The idea is that students can pick certain characteristics about a roommate that they deem unacceptable in a roommate. The application of deal-breakers is endless – one could choose to give every question the option of being a deal-breaker – this is an approach we do not recommend because it would greatly reduce the number of feasible swaps. 
+
+An example of how a deal-breaker could be applied to a preference is with the following question: Are you a smoker? A person may not want to ever be placed in a room with someone that smokes cigarettes. We will walk through this example in more detail in the following section.
 
 \section{Preferences}
+Now we'll discuss more in depth how we...
+
 \subsection{Specific Preferences we considered}
-\subsection{How specific preferences result in a weight}
+
+\subsection{Calculating Weights}
+Trouble with calculating weights for binary preferences (smoking vs. nonsmoking) vs. living locations
+
 \subsection{Ideas we kept, rejected, and that could be considered later}
+Road blocks we ran into:
+Dealbreakers
+What can we ask according to university policy
 
 \section{Model}
-\subsection{Some Kind of Graph?}
 
-\section{Integer Programming}
-\subsection{TODO}
+\subsection{Some Kind of Graph?}
+Our general idea for the solution:
+graph structure; rooms are vertices, edges between vertices.
+
+\subsection{Lambda Calculus}
+Should we talk about this?\\
+The problem. 
+How lambda calculus solves the problem.
 
 \end{multicols}
 
@@ -50,18 +105,16 @@
 
 Up until now we've thought of our rooms as nodes in a graph. Now we'll look at the data as sets of potential occupants of the room. First, some terminology:\\
 
-\noindent{Rooms $R$; \qquad with each $r\in\mathbb{R}$\qquad with capacity $c_r\in\mathbb{Z^+}$}\\
-\noindent{Students $S$; \qquad with each $s\in\mathbb{S}$}\\ 
+\noindent{Rooms $R$; \qquad with each $r\in{\cal R}$\qquad with capacity $c_r\in\mathbb{Z^+}$}\\
+\noindent{Students $S$; \qquad with each $s\in{\cal S}$}\\ 
 
-\noindent We're going to be doing most of our optimizing on variable x:\\
+\noindent We're going to be doing most of our optimizing on variable x:
 
 \begin{equation*}
 \noindent{x_r^s \in \{0, 1\}\\} 
 \end{equation*}
 
-%{$r'$ is room \#\\
-
-\noindent{$s$ is student \#\\
+\noindent{$s$ is student set \#\\
 $r$ is old room \#}
 
 \noindent{0 if they don't go to room, 1 if they do. }\\
@@ -69,26 +122,32 @@ $r$ is old room \#}
 What we're going to be maximizing, since this is an optimization problem, is W(R,S). As you recall each edge has a weight w(r,s), and W is the sum of all of the weights from each student wherever they end up. So our optimization equation is:\\
 
 \begin{equation*}
-\max\sum_{r\in{R}}\sum_{s\in{S(p)}}w(r,s)\cdot{x_s^r}\quad{s.t.}\\
+\max\sum_{r\in{R}}\sum_{s\in{S(r)}}w(r,s)\cdot{x_s^r}\quad{s.t.}\\
 \end{equation*}
 
 With the constraints that each student gets assigned to a room and makes sure each only gets assigned to one room.
 
 \begin{align*}
-\forall{s}&\in{S}\sum_{r\in{R}}\sum_{s\in{S(p)}}x_s^r=1\\
+\forall{s}&\in{S}\sum_{r\in{R}}\sum_{s\in{S(r)}}x_s^r=1\\
 \forall{r}&\in{R}\sum_{s\in{S(r)}}x_s^r=1
 \end{align*}
 
-Here we're going to put our example:\\
+Let's take a look at an example:\\
 
 \includegraphics[scale=0.25]{c1} %\qquad \qquad
 \includegraphics[scale=0.25]{c2} %\qquad \qquad
 \includegraphics[scale=0.25]{c3}
-\includegraphics[scale=1]{symbol}
+\includegraphics[scale=0.5]{symbol}
+(Occupied room)\\
 
-%\{s_{11}, s_{21}, s_{22},s_{31}\}$
+Each node $r\in{\cal R}$, has a set of potential sets that could move into that node. If there is one vacancy in the room, it will be sets of one which we will just denote as singular objects for convenience. However, in the case of node $r_2$ above, the set will be sets of two.
+
 \begin{equation*}
-\{\{s_{11}, s_{21}\}, \{s_{11},s_{22}\},\{s_{11},s_{31}\},  \{s_{21},s_{22}\}, \{s_{21},s_{31}\},  \{s_{22},s_{31}\} \}\implies x_r^s \in \{0, 1\}
+$r_1$ = $\{s_{11}, s_{21}, s_{22},s_{31}\}$$\\
+$r_2$ = $\{\{s_{11}, s_{21}\}, \{s_{11},s_{22}\},\{s_{11},s_{31}\},  \{s_{21},s_{22}\}, \{s_{21},s_{31}\},  \{s_{22},s_{31}\} \}$\\
+$r_3$ = $\{s_{11}, s_{21}, s_{22},s_{31}\}$\\
+
+\implies x_r^s \in \{0, 1\}
 \end{equation*}
 
 \begin{align*}
@@ -98,14 +157,28 @@ x_5^2+x_2^3&=1\\
 
 \begin{multicols}{2}
 
-\section{Future Work- If we had more time}
+\section{Integer Programming}
+In order to determine how to optimize our swapping, professor Dickerson introduced us to integer programming. He has used it previously to solve similar problems with swapping markets. Most of the knowledge (with the addition of some wikipedia) we learned about integer programming came from professor Dickerson and also a lecture off of MIT's OpenCourseWare (citation?). 
+
+\subsection{So what is integer programming?}
+Integer programming solves combinatorial optimization problems. Each room has |s| (\# students) choose $c_r$ (capacity of the room) possibilities for who can stay in there. The structure of a problem that can be solved.
+
+\subsection{Why will this work?}
+So as we've just described, integer programming optimizes (by minimizing or maximizing) a value. In our case, integer programming maximizes the sum of the weights of people swapping rooms. That is our main goal and it is fulfilled by this algorithm. Also, since we've imposed our constraints on the system (each student gets put in one room and only one room), we know that the result outputted will be a feasible solution. Therefore we know the solution outputted will be an implementable solution, but that leaves for all kinds of potential corner cases. One example is if the optimal solution is that everybody stays where they are. This is highly unlikely because it would mean that all weights are zero. A more likely case is that the algorithm leaves some people where they are. This does not seem like it would optimize the system but if one person is extremely hard to deal with, leaving them where they are might be the best option. That person may have to relax their preferences and re-enter the swap to find a good roommate. Regardless of the results, we know this will work for us if we compose the appropriate inputs and write the constraints properly and then put it into a black box solver. As we've already described the algorithm it will output the happiest weighted set of assignments.
+
+\section{Future Work- Data Analysis}
 Initially we struggled to determine what we should do to show results for our algorithm. We were originally thinking we would want to compare the same inputs on our system as theirs and see which was better. However, we got no information from Reslife throughout the semester so using results in our analysis at all wasn't going to happen. We had to choose a new way to validate our work.
 
 \subsection{Testing Speed of Algorithm}
 Our first attempt to try and  we might just run our own algorithm on 10 students, then 100, then 10,000 to see how the speed decreases with runs. But, we realized that wasn't really a useful metric to rate our algorithm by because not that many students enter the room swap. UMD has 4,000 students living on campus so it doesn't really reach that volume.
 
 \subsection{Surveys}
-During our presentation in class professor Hicks suggested that we could survey peoople to find out how they feel about their room situation.
+During our presentation in class professor Hicks suggested that we could survey people to find out how they feel about their room situation.
+
+\section{Future Work- Room to Expand}
+We didn't realize that we were spending too much time worrying about the preferences and as such didn't get to implement everything that we discussed. There are a couple topics we talked about how we would deal with but decided to cut them for the purposes of this class.\\
+-multi-gender housing situations (we assumed everyone in the swap is of the same gender to eliminate this confusion)\\
+-what else did we eliminate?
 
 \section{Works Cited}
 "Introduction to Integer Programming - Integer Programming Models." The Lancet (2013). http://ocw.mit.edu. MIT OpenSourceWare, 14 Mar. 2013. PDF.
