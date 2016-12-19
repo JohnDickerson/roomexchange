@@ -172,12 +172,12 @@ What can we ask according to university policy
 \subsection{Some Kind of Graph?}
 %Our general idea for the solution: graph structure; rooms are vertices, edges between vertices.
 The data structure we determined would best fulfill our needs (requirements/conditions) was a graph. Each node in the graph represents a room, $r$. Each room has a capacity, $c_r$. Each edge has a weight, which represents the compatibility between the room/current resident, based on the preferences of the students. We decided to use Java, and have the following classes: Profile, Person, Question, Answer.
-\paragraph{Person} The Person class would hold information about the person, such as their name, age, sex, major. 
+\paragraph{Person} The Person class would hold information about the person, such as the student's name, age, sex, major, contact information, the dorm he or she is currently living in.
 \paragraph{Question}
-The Question class would hold information about the question, the question, and a calculate weight method. The calculate weight method would have two Answer objects as parameters (arguments). Based on each student's answer, we would return a value. We realized depending on the question, the format of the answer, this would be hard to implement using generics. Coming up with a good design was challenging. 
-%We discuss this more in depth in Lambda Expressions
+The Question class would hold information about the question, the question, and a calculate weight method. The calculate weight method would have two Answer objects as parameters (arguments). Based on each student's answer, we would return a value. We realized depending on the question, the format of the answer, this would be hard to implement using generics. Coming up with a good design was challenging. We discuss this more in depth in the following section. 
+%Lambda Expressions
 
-\paragraph{Answer} The Answer class would hold a students answer to a question. If the Question had the option of being a 'deal-breaker', we would
+\paragraph{Answer} The Answer class would hold a students answer to a question. If the Question had the option of being a 'deal-breaker', we would store this information as a boolean here as well.
 \paragraph{Profile} The Profile class would hold all the answers to the questions.  
 
 \subsection{Lambda Expressions}
