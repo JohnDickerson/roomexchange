@@ -5,6 +5,7 @@
 \usepackage{amssymb}
 \usepackage{graphicx}
 %\graphicspath{ {images/} }
+\usepackage{url}
 \usepackage{titlesec}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
@@ -13,6 +14,7 @@
 \usepackage{listings}
 \usepackage{color}
 \usepackage{float}
+%\usepackage{biblatex}
 
 \definecolor{javared}{rgb}{0.6,0,0} % for strings
 \definecolor{javagreen}{rgb}{0.25,0.5,0.35} % comments
@@ -149,14 +151,22 @@ Students are required to provide information when applying for on-campus housing
 
 \subsection{Calculating Weights}
 %Trouble with calculating weights for binary preferences (smoking vs. nonsmoking) vs. living locations
-Based on the nature of the answers to some of these questions we needed to come up with a method of converting these answers to a 'value'. 
+We use edge weights to capture student preferences.
+Based on our model, our edge weights represent the compatibility of a student to another student and the room. So we needed a way of converting their preferences, (that is, their responses to our questions), into a numeric value. 
+This proved to be challenging because the format of their responses varied by question. Based on the nature of the answers to some of these questions we needed to come up with a method of converting these answers to a 'value'. For some of their responses, assigning a value was simple.
+%Note that a room coul
+\paragraph{Example}
+For example, converting age into a numeric value is simple. We would just subtract the difference of each students' age from some constant, $k$, where $k$ represents the maximum value weight we have determined this question should have. On the other hand, other responses were far more challenging to assign a value, simply because of the format of their response. 
+
+\paragraph{Example}
+For example, consider our question: \textit{What is your usual sleeping/waking up time?} How do we translate this information into a value? 
 
 \subsection{Ideas we kept, rejected, and that could be considered later}
 Road blocks we ran into:
 Dealbreakers
 
 What can we ask according to university policy
-\end{multicols} %ADDED HERE
+\end{multicols} %added
 \section{Model}
 
 \subsection{Some Kind of Graph?}
@@ -169,6 +179,7 @@ The Question class would hold information about the question, the question, and 
 
 \paragraph{Answer} The Answer class would hold a students answer to a question. If the Question had the option of being a 'deal-breaker', we would
 \paragraph{Profile} The Profile class would hold all the answers to the questions.  
+
 \subsection{Lambda Expressions}
 %Should we talk about this?\\
 %The problem. 
@@ -241,7 +252,8 @@ x_5^2+x_2^3&=1\\
 \begin{multicols}{2}
 
 \section{Integer Programming}
-In order to determine how to optimize our swapping, Dr. Dickerson introduced us to integer programming. He has used it previously to solve similar problems with swapping markets. Most of the knowledge (with the addition of some wikipedia) we learned about integer programming came from Dr. Dickerson and also a lecture off of MIT's OpenCourseWare (citation?). 
+In order to determine how to optimize our swapping, Dr. Dickerson introduced us to integer programming. He has used it previously to solve similar problems with swapping markets. Most of the knowledge (with the addition of some wikipedia) we learned about integer programming came from Dr. Dickerson and also a lecture off of MIT's OpenCourseWare (citation?).
+% \cite{orlin}
 
 \subsection{So what is integer programming?}
 Integer programming solves combinatorial optimization problems. Each room has $s$ (\# students) choose $c_r$ (capacity of the room) possibilities for who can stay in there. The structure of a problem that can be solved. 
@@ -267,4 +279,7 @@ We didn't realize that we were spending too much time worrying about the prefere
 "Introduction to Integer Programming - Integer Programming Models." The Lancet (2013). http://ocw.mit.edu. MIT OpenSourceWare, 14 Mar. 2013. PDF.
 
 \end{multicols}
+%\bibliographystyle{ieeetr}
+%\bibliography{references} 
+
 \end{document}
