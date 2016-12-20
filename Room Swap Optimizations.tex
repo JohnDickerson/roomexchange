@@ -106,7 +106,7 @@ In the next section we will go into specifics about preferences we examined, pre
 \subsection{Deal-breakers} 
 Closely related to preferences is the concept of deal-breakers. The idea is that students can pick certain characteristics about a roommate that they deep unacceptable in a roommate. The application of deal-breakers is endless - one could choose to give every question the option of a deal-breaker. This is an approach we do not recommend because it would greatly reduce the number of feasible swaps. 
 % Allowing each question to be a deal-breaker is an approach we do not recommend because it would greatly reduce the number of feasible swaps. 
-\paragraph{Example}
+\paragraph{Example.}
 An example of how a deal-breaker could be applied to a preference is with the following question: \textit{Are you a smoker?} A person who doesn't smoke may not want to ever be placed in a room with someone that smokes cigarettes. We will walk through this example in more detail in the following section.
 
 \section{Preferences}
@@ -132,10 +132,10 @@ First, we came up with an initial list of important factors that could potential
 \item Usual sleep/waking up time
 \item Preferred place for studying
 \end{itemize}
-After coming up with this list, we realized some of some of these questions would be inappropriate to ask, would complicate the model. For example, we thought religion might be important because a student. For example, some religions might pray a number of times throughout the day. We also had to consider what we could ask according to university policy. 
+After coming up with this list, we realized some of some of these questions would be inappropriate to ask, and we were unsure if we would be allowed to ask them. For two questions specifically, we felt they might give us a good idea on how accepting of diversity students would be. For example, we thought religion might be important to some students. Additionally, we thought sexual orientation might be important to ask about. Ideally, the room swap does not place people in rooms where they are bound to be disliked right off the bat. Ultimately, we had to consider what we could ask according to university policy and decided to air on the side of caution with respect to these two questions. 
 
 
-We narrowed down the list to
+We narrowed down the list to:
 \begin{itemize}[noitemsep]
 \item Smoking habits
 \item Major 
@@ -146,7 +146,7 @@ We narrowed down the list to
 \item Usual sleep/waking up time
 \item Preferred place for studying
 \end{itemize}
-\paragraph{Improvements}
+\paragraph{Improvements.}
 Students are required to provide information when applying for on-campus housing. Since typically, using the information for the student staying in the room. It didn't seem reasonable to require students staying in the room to fill out a form because their roommate was participating in the room exchange. This would also be inefficient because the roommate staying in the room would have to fill out the form multiple times in the case that subsequent roommates participated in the exchange, but their answers would probably be the same. Since ResLife requires students to provide basic information when applying for housing, we would (theoretically) just retrieve the information from there. Since some of this information is subject to change, a student could update their profile. 
 
 
@@ -156,10 +156,10 @@ We use edge weights to capture student preferences.
 Based on our model, our edge weights represent the compatibility of a student to another student and the room. So we needed a way of converting their preferences, (that is, their responses to our questions), into a numeric value. 
 This proved to be challenging because the format of their responses varied by question. Based on the nature of the answers to some of these questions we needed to come up with a method of converting these answers to a 'value'. For some of their responses, assigning a value was simple.
 %Note that a room coul
-\paragraph{Example}
+\paragraph{Example.}
 For example, converting age into a numeric value is simple. We would just subtract the difference of each students' age from some constant, $k$, where $k$ represents the maximum value weight we have determined this question should have. On the other hand, other responses were far more challenging to assign a value, simply because of the format of their response. 
 
-\paragraph{Example}
+\paragraph{Example.}
 For example, consider our question: \textit{What is your usual sleeping/waking up time?} How do we translate this information into a value? 
 
 \subsection{Ideas we kept, rejected, and that could be considered later}
