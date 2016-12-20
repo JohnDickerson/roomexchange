@@ -4,7 +4,6 @@
 \usepackage{amsmath} 
 \usepackage{amssymb}
 \usepackage{graphicx}
-%\graphicspath{ {images/} }
 \usepackage{url}
 \usepackage{titlesec}
 \usepackage[utf8]{inputenc}
@@ -14,7 +13,6 @@
 \usepackage{listings}
 \usepackage{color}
 \usepackage{float}
-%\usepackage{biblatex}
 
 \definecolor{javared}{rgb}{0.6,0,0} % for strings
 \definecolor{javagreen}{rgb}{0.25,0.5,0.35} % comments
@@ -41,20 +39,19 @@ showstringspaces=false
 
 \begin{center}
 \author{\textbf {Authors: Lauren Leach, Ryan Sachs, Lisa Maszkiewicz\\ \footnotesize Supervised by: John Dickerson\\ }} 
-%\institute{\textbf \\{University of Maryland, College Park\\}}
+\institute{\textbf {University of Maryland, College Park\\}}
  
 %\begin{document}
 
 \begin{abstract}
-%\blindtext
-  % \\abstract-text\\ \\ \\ \\
+There is a lot of campus affiliated housing at the University of Maryland, College Park. As such, a lot of people need roommates. If a student gets assigned a roommate they don't like then they have the opportunity to enter a "room swap" and possibly get moved to another room. We sought to improve the current system by taking into account the students' preferences to make the best swap. We spent quite a bit of time trying to determine which preferences we should take into account and how we can turn answers to questions into a binary optimization problem. As a result, we didn't have time to implement the system this semester, but we have a design plan and a section devoted to discussion on our future work analyzing our algorithm.
 \end{abstract}
 
 \end{center}
 %\begin{multicols}{2}
 
 \section{Introduction}
-%This paper is organized as follows. In Section 2, we
+
 \subsection{Problem Statement and Goal}
 The goal of the roommate swap research project is to improve the current process of roommate swapping that occurs at the University of Maryland. Specifically, we sought to look at the way swapping is currently done and identify the shortcomings, improve or eradicate those shortcomings in a new model, and implement an optimization that would result in better roommate swaps. We define a ‘better’ swap to mean that it would result in greater happiness. An optimal swap would have the maximum happiness level throughout everyone that is swapping.
 
@@ -70,13 +67,14 @@ The current roommate swap program at the University of Maryland is limited. The 
 \end{itemize}
 
 \subsection{Shortcomings of Current Program}
-Individual vacancies are a limited commodity. There are only so many rooms on campus that are missing one person or that are just empty. If most people are entering the swap needing this condition, then most people will not be able to find a new room. 
+\\
+Individual vacancies are a limited commodity. There are only so many rooms on campus that are missing one person or that are just empty. If most people are entering the swap needing this condition, then most people will not be able to find a new room. \\
 
 A three-way swap is not possible. The same two-way swap situation could be present within three rooms. In the current model, this would not be handled.
 The model requires that you know someone who is unhappy with their roommate situation. If you wanted to swap rooms or to do a pair vacancy you would have to put someone’s university id number down on a form. It is unlikely that you would be able to find someone on your own that is also unhappy with their situation and interested in moving out to live with you as a result. Similarly, it is unlikely that you would be able to find someone to swap with. There are disproportionally more people that fall into the individual vacancy category than there are swaps and pair vacancies due to the format of needing to know someone and their UID. \\
 
-There's no reason why we can't consider everyone for roommate swapping. In principle, doing a swap and performing an individual vacancy are the same thing for the person entering the swap. In both cases they are placed in a room with a 'missing' roommate. Unfortunately, many people who would be awesome candidates for a roommate swap are not even considered due to needing to know someone who is also unhappy with their situation.
-\paragraph{Preferences}
+There's no reason why we can't consider everyone for roommate swapping. In principle, doing a swap and performing an individual vacancy are the same thing for the person entering the swap. In both cases they are placed in a room with a 'missing' roommate. Unfortunately, many people who would be awesome candidates for a roommate swap are not even considered due to needing to know someone who is also unhappy with their situation. \\
+
 Preferences are not taken into consideration at all in the current system. Arguably, people who enter the swap are just as likely to be unhappy in their new room as they were unhappy in their first room. The current program could easily place someone into a room where they are destined to be unhappy because it doesn't consider the compatibility of roommates, just whether or not there is a vacancy. 
 
 \subsection{Expected Outcomes and Solution}
@@ -95,7 +93,6 @@ In Figure 1 you can see an example of our model. Figure 1.1a represents the set 
 \includegraphics[scale=0.6]{model} 
 \caption{Room Swap Model}
 \end{figure}
-%\includegraphics[scale=0.6]{model} %\qquad
 \noindent As you can see in the above figure, room $r_1$ has one student in the swap, $s_1$, room $r_2$ has two students in the swap, $s_2$ and $s_3$, and room $r_3$ has one student in the swap, $s_4$. Figure 1.4 is the result of the optimal swap taking place, where student $s_3$ moves into $r_1$, students $s_2$ and $s_3$ move into $r_2$, and student $s_2$ moves into $r_3$. In Figures 1.3a-c each tuple consists of student(s) and a weight. The tuples containing the optimal swaps have the highest weight total of any other combination with 24.
 
 \subsection{Preferences}
@@ -104,16 +101,15 @@ In the next section we will go into specifics about preferences we examined, pre
 \noindent Preferences are what result in the weights in the model – they take into account two things; the personality compatibility of the roommates and the room characteristics. Students will fill out a form/survey and their answers will be compared to other students’ answers to try to predict compatibility. 
 
 \subsection{Deal-breakers} 
-Closely related to preferences is the concept of deal-breakers. The idea is that students can pick certain characteristics about a roommate that they deep unacceptable in a roommate. The application of deal-breakers is endless - one could choose to give every question the option of a deal-breaker. This is an approach we do not recommend because it would greatly reduce the number of feasible swaps. 
+Closely related to preferences is the concept of deal-breakers. The idea is that students can pick certain characteristics about a roommate that they deep unacceptable in a roommate. The application of deal-breakers is endless - one could choose to give every question the option of a deal-breaker. This is an approach we do not recommend because it would greatly reduce the number of feasible swaps. \\
 % Allowing each question to be a deal-breaker is an approach we do not recommend because it would greatly reduce the number of feasible swaps. 
-\paragraph{Example.}
+
 An example of how a deal-breaker could be applied to a preference is with the following question: \textit{Are you a smoker?} A person who doesn't smoke may not want to ever be placed in a room with someone that smokes cigarettes. We will walk through this example in more detail in the following section.
 
 \section{Preferences}
 %Now we'll discuss more in depth how we...
 %Based on our model, We use edge weights to capture student preferences. 
-In this section, we'll discuss in depth how we determined what preferences to consider , and how we calculated edge weights. 
-
+In this section, we'll discuss in depth how we determined what preferences to consider. We will also discuss, based on our model, how we calculated edge weights. 
 
 \subsection{Specific Preferences Considered}
 First, we came up with an initial list of important factors that could potentially affect students' overall satisfaction (level) of their room. The factors we deemed important included: 
@@ -145,28 +141,29 @@ After coming up with this list, we realized some of some of these questions woul
 \item Usual sleep/waking up time
 \item Preferred place for studying
 \end{itemize}
-\paragraph{Improvements.}
+
+Improvements:\\
 Students are required to provide information when applying for on-campus housing. Since typically, using the information for the student staying in the room. It didn't seem reasonable to require students staying in the room to fill out a form because their roommate was participating in the room exchange. This would also be inefficient because the roommate staying in the room would have to fill out the form multiple times in the case that subsequent roommates participated in the exchange, but their answers would probably be the same. Since ResLife requires students to provide basic information when applying for housing, we would (theoretically) just retrieve the information from there. Since some of this information is subject to change, a student could update their profile. 
 
 
 \subsection{Calculating Weights}
-%Trouble with calculating weights for binary preferences (smoking vs. nonsmoking) vs. living locations
 We use edge weights to capture student preferences.
 Based on our model, our edge weights represent the compatibility of a student to another student and the room. So we needed a way of converting their preferences, (that is, their responses to our questions), into a numeric value. 
-This proved to be challenging because the format of their responses varied by question. Based on the nature of the answers to some of these questions we needed to come up with a method of converting these answers to a 'value'. For some of their responses, assigning a value was simple.
-%Note that a room coul
-\paragraph{Example.}
+This proved to be challenging because the format of their responses varied by question. Based on the nature of the answers to some of these questions we needed to come up with a method of converting these answers to a 'value'. For some of their responses, assigning a value was simple.\\
+
 For example, converting age into a numeric value is simple. We would just subtract the difference of each students' age from some constant, $k$, where $k$ represents the maximum value weight we have determined this question should have. Below is code that would do that for us.
 
 \lstinputlisting[language=Java, caption={Calculating Weight with Student Age}]{weightCalc.java}
-\paragraph{Example.}
-On the other hand, other preferences are far more challenging to assign a value, simply because responses to certain questions are far from just a number. Consider a case where we are trying to calculate a weight based on location. How would we measure the strength of a room assignment consisting of a student wanting to live in Leonardtown, but being evaluated for room located in Commons? Below is code that would do that for us.
+
+On the other hand, other preferences are far more challenging to assign a value, simply because responses to certain questions are far from just a number. Consider a case where we are trying to calculate a weight based on location. How would we measure the strength of a room assignment consisting of a student wanting to live in Leonardtown, but being evaluated for room located in Commons? Below is code that would do that for us. 
+
 %Supposed we had a student who selected 
 \lstinputlisting[language=Java, caption={Calculating Weight with Location}]{locationCalc.java}
 %\end{multicols}
 In the above scenario, both Leanardtown and Commons are located on South Campus, so a value of one would be returned. Appropriately, this would be better than if the same student was being evaluated for a room on North Campus, while being worse than if the room was located in Leonardtown. 
-\paragraph{Example.}
+
 Earlier, we introduced the concept of deal breakers. There are a variety of ways to implement this and some approaches, possibly the best approaches, involve the use of an 'Answer' object that could have a deal breaker field. For the sake of simplicity, we will omit that in this example.
+
 \lstinputlisting[language=Java, caption={Calculating Weight with Deal Breaker}]{smokerCalc.java}
 In order to calculate the overall weight, or in other words, calculate the optimality of a room assignment for a student, one need only to add the sum of all of these weight calculating functions for each question in the form. To account for deal breakers, just look out for a negative weight at any time. These functions can be implemented in Java by using lambda functions, which could allow you to store weight calculations within a 'Question' object by invoking the constructor. Alternatively, you could choose to implement separate functions and just call them accordingly when going through this process.
 
@@ -181,7 +178,6 @@ There are a plethora of preferences you can consider when implementing a roommat
 %\end{multicols} 
 \section{Model}
 
-\subsection{Some Kind of Graph?}
 %Our general idea for the solution: graph structure; rooms are vertices, edges between vertices.
 The data structure we determined would best fulfill our needs (requirements/conditions) was a graph. Each node in the graph represents a room, $r$. Each room has a capacity, $c_r$. Each edge has a weight, which represents the compatibility between the room/current resident, based on the preferences of the students. We decided to use Java, and have the following classes: Profile, Person, Question, Answer.
 \paragraph{Person} The Person class would hold information about the person, such as the student's name, age, sex, major, contact information, the dorm he or she is currently living in.
@@ -201,7 +197,6 @@ At first we had difficulty coming up with a efficient design that allowed us to 
 \paragraph{BiFunction Interface}
 The BiFunction Interface represents a function that accepts two arguments and produces a result. In our case the two arguments are student responses, and the result will be a numerical value-- specifically, an integer. 
 
-\paragraph{Examples}
 For example, consider our age response again. The weight function for students' ages would be implemented as follows.
 
 \lstinputlisting[language=Java, caption={Calculating Weight with Student Age}]{lambda_example.java}
