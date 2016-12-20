@@ -51,7 +51,7 @@ showstringspaces=false
 \end{abstract}
 
 \end{center}
-\begin{multicols}{2}
+%\begin{multicols}{2}
 
 \section{Introduction}
 %This paper is organized as follows. In Section 2, we
@@ -156,17 +156,29 @@ Based on our model, our edge weights represent the compatibility of a student to
 This proved to be challenging because the format of their responses varied by question. Based on the nature of the answers to some of these questions we needed to come up with a method of converting these answers to a 'value'. For some of their responses, assigning a value was simple.
 %Note that a room coul
 \paragraph{Example.}
-For example, converting age into a numeric value is simple. We would just subtract the difference of each students' age from some constant, $k$, where $k$ represents the maximum value weight we have determined this question should have. On the other hand, other responses were far more challenging to assign a value, simply because of the format of their response. 
+For example, converting age into a numeric value is simple. We would just subtract the difference of each students' age from some constant, $k$, where $k$ represents the maximum value weight we have determined this question should have. Below is code that would do that for us.
 
+\lstinputlisting[language=Java, caption={Calculating Weight with Student Age}]{weightCalc.java}
 \paragraph{Example.}
-For example, consider our question: \textit{What is your usual sleeping/waking up time?} How do we translate this information into a value? 
+On the other hand, other preferences are far more challenging to assign a value, simply because responses to certain questions are far from just a number. Consider a case where we are trying to calculate a weight based on location. How would we measure the strength of a room assignment consisting of a student wanting to live in Leonardtown, but being evaluated for room located in Commons? Below is code that would do that for us.
+%Supposed we had a student who selected 
+\lstinputlisting[language=Java, caption={Calculating Weight with Location}]{locationCalc.java}
+%\end{multicols}
+In the above scenario, both Leanardtown and Commons are located on South Campus, so a value of one would be returned. Appropriately, this would be better than if the same student was being evaluated for a room on North Campus, while being worse than if the room was located in Leonardtown. 
+\paragraph{Example.}
+Earlier, we introduced the concept of deal breakers. There are a variety of ways to implement this and some approaches, possibly the best approaches, involve the use of an 'Answer' object that could have a deal breaker field. For the sake of simplicity, we will omit that in this example.
+\lstinputlisting[language=Java, caption={Calculating Weight with Deal Breaker}]{smokerCalc.java}
+In order to calculate the overall weight, or in other words, calculate the optimality of a room assignment for a student, one need only to add the sum of all of these weight calculating functions for each question in the form. To account for deal breakers, just look out for a negative weight at any time. These functions can be implemented in Java by using lambda functions, which could allow you to store weight calculations within a 'Question' object by invoking the constructor. Alternatively, you could choose to implement separate functions and just call them accordingly when going through this process.
 
-\subsection{Ideas we kept, rejected, and that could be considered later}
-Road blocks we ran into:
-Dealbreakers
+\subsection{Other preferences to be considered}
+There are a plethora of preferences you can consider when implementing a roommate swap. A few more ideas are:
+\begin{itemize}[noitemsep]
+\item AC in rooms
+\item Ok with living in triples/doubles 
+\item Prefer apartment setting
+\end{itemize}
 
-What can we ask according to university policy
-\end{multicols} %added
+%\end{multicols} 
 \section{Model}
 
 \subsection{Some Kind of Graph?}
@@ -192,10 +204,10 @@ The BiFunction Interface represents a function that accepts two arguments and pr
 \paragraph{Examples}
 For example, consider our age response again. The weight function for students' ages would be implemented as follows.
 
-\lstinputlisting[language=Java, caption={Lambda Function}]{lambda_example.java}
+\lstinputlisting[language=Java, caption={Calculating Weight with Student Age}]{weightCalc.java}
 Assigning a weight is simple, however. On the other handle, responses are a little more tricky. For example, consider location. 
 %Supposed we had a student who selected 
-\lstinputlisting[language=Java, caption={Lambda Function for Location}]{location_example.java}
+\lstinputlisting[language=Java, caption={Calculating Weight with Location}]{locationCalc.java}
 %\end{multicols}
 
 \section{Optimization Algorithm}
