@@ -1,0 +1,18 @@
+public static Map<String, Map<String, Integer>> distances(String[] locations) {
+	HashMap<String, HashMap<String, Integer>> distanceMap = new HashMap<String, HashMap<String, Integer>>();
+
+	for (String source : locations) {
+		HashMap<String, Integer> distances = new HashMap<String, Integer>();
+
+		for (String dest : locations) {
+			DistanceMatrix matrix =  DistanceMatrixApi.getDistanceMatrix(context, source, dest).await();
+			int distance = matrix.rows[0].elements[0].distance;
+			distances.put(dest, distance);
+		}
+
+		distanceMap.put(community,distances);
+	
+		}
+	}
+
+}
