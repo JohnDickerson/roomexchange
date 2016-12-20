@@ -132,10 +132,9 @@ First, we came up with an initial list of important factors that could potential
 \item Usual sleep/waking up time
 \item Preferred place for studying
 \end{itemize}
-After coming up with this list, we realized some of some of these questions would be inappropriate to ask, and we were unsure if we would be allowed to ask them. For two questions specifically, we felt they might give us a good idea on how accepting of diversity students would be. For example, we thought religion might be important to some students. Additionally, we thought sexual orientation might be important to ask about. Ideally, the room swap does not place people in rooms where they are bound to be disliked right off the bat. Ultimately, we had to consider what we could ask according to university policy and decided to air on the side of caution with respect to these two questions. 
+After coming up with this list, we realized some of some of these questions would be inappropriate to ask, and we were unsure if we would be allowed to ask them. For two questions specifically, we felt they might give us a good idea on how accepting of diversity students would be. For example, we thought religion might be important to some students. Additionally, we thought sexual orientation might be important to ask about. Ideally, the room swap does not place people in rooms where they are bound to be disliked right off the bat. Ultimately, we had to consider what we could ask according to university policy and decided to air on the side of caution with respect to these two questions. \\
 
-
-We narrowed down the list to:
+\noindent We narrowed down the list to:
 \begin{itemize}[noitemsep]
 \item Smoking habits
 \item Major 
@@ -188,7 +187,7 @@ The Question class would hold information about the question, the question, and 
 At first we had difficulty coming up with a efficient design that allowed us to include different weight functions between ``Questions". Since the calculate weight method of the Question class determined the weight, we needed to include the functionality of this method as an argument. We eventually found a solution using Java Lambda expressions. Java Lambda expressions allows us to include our function as an argument. Using the BiFunction Interface, we can take answers from two students and translate their responses into numerical value, regardless of the nature or format of their responses. 
 
 \paragraph{BiFunction Interface}
-BiFunction Interface represents a function that accepts two arguments and produces a result. In our case the two arguments are student responses, and the result will be a numerical value-- specifically, an integer. 
+The BiFunction Interface represents a function that accepts two arguments and produces a result. In our case the two arguments are student responses, and the result will be a numerical value-- specifically, an integer. 
 
 \paragraph{Examples}
 For example, consider our age response again. The weight function for students' ages would be implemented as follows.
