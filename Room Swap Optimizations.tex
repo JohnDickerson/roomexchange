@@ -185,9 +185,18 @@ The Question class would hold information about the question, the question, and 
 %Should we talk about this?\\
 %The problem. 
 %How lambda calculus solves the problem.
-At first we had difficulty coming up with a efficient design that allowed us to include different weight functions between ``Questions". Since the calculate weight function of the Question class determined the weight, we needed to include the functionality of this method as an argument. We eventually found a solution using Java Lambda expressions. Java Lambda expressions allows us to include our function as an argument. 
+At first we had difficulty coming up with a efficient design that allowed us to include different weight functions between ``Questions". Since the calculate weight method of the Question class determined the weight, we needed to include the functionality of this method as an argument. We eventually found a solution using Java Lambda expressions. Java Lambda expressions allows us to include our function as an argument. Using the BiFunction Interface, we can take answers from two students and translate their responses into numerical value, regardless of the nature or format of their responses. 
+
+\paragraph{BiFunction Interface}
+BiFunction Interface represents a function that accepts two arguments and produces a result. In our case the two arguments are student responses, and the result will be a numerical value-- specifically, an integer. 
+
+\paragraph{Examples}
+For example, consider our age response again. The weight function for students' ages would be implemented as follows.
 
 \lstinputlisting[language=Java, caption={Lambda Function}]{lambda_example.java}
+Assigning a weight is simple, however. On the other handle, responses are a little more tricky. For example, consider location. 
+%Supposed we had a student who selected 
+\lstinputlisting[language=Java, caption={Lambda Function for Location}]{location_example.java}
 %\end{multicols}
 
 \section{Optimization Algorithm}
