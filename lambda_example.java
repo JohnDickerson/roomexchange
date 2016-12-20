@@ -1,3 +1,4 @@
-BiFunction<Integer, Integer, Integer> weightFunction = (x, y) -> {      
-      return x + y; //whatever our functino
+BiFunction<Integer, Integer, Integer> ageFunction = (x, y) -> { 
+	static int MAX = 5;
+	return MAX - Math.abs(x - y);
 };
